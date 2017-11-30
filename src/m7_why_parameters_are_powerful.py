@@ -2,18 +2,19 @@
 This module lets you experience the POWER of FUNCTIONS and PARAMETERS.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Adi Sethupathy.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_draw_circles()
+    #run_test_draw_circles()
     # Un-comment the next lines when you are ready to use them.
-    # run_test_better_draw_circles()
-    # run_test_even_better_draw_circles()
+    #run_test_better_draw_circles(6)
+    #run_test_even_better_draw_circles(100)
+    even_better_draw_circles(1,3,'green')
 
 
 # ----------------------------------------------------------------------
@@ -31,7 +32,7 @@ def run_test_draw_circles():
     """ Tests the   draw_circles   function. """
     # ------------------------------------------------------------------
     # Students:
-    #   Do NOT touch this function - it has no TODO in it.
+    #   Do NOT touch this function - it has no DONE in it.
     # ------------------------------------------------------------------
     print()
     print('--------------------------------------------------')
@@ -64,7 +65,7 @@ def draw_circles():
     window.close_on_mouse_click()
 
 # ----------------------------------------------------------------------
-# TODO: 2.
+# DONE: 2.
 #   First, RUN this program.  You will see that draw_circles draws
 #   concentric circles whose radii vary by 10.
 #
@@ -92,10 +93,34 @@ def draw_circles():
 #   run_test_draw_circles  may get you started more quickly on your new
 #   better_draw_circles  and  run_test_better_draw_circles.
 # ----------------------------------------------------------------------
+def better_draw_circles(x):
+    window = rg.RoseWindow(400, 400)
 
+    center = rg.Point(200, 200)
+    radius = 0
+    for k in range(21):
+        radius += x
+        circle = rg.Circle(center,radius)
+        circle.attach_to(window)
+        window.render(0.05)  # Pauses for 0.05 seconds after rendering.
+
+    window.close_on_mouse_click()
+
+
+def run_test_better_draw_circles(x):
+    """ Tests the   draw_circles   function. """
+    # ------------------------------------------------------------------
+    # Students:
+    #   Do NOT touch this function - it has no DONE in it.
+    # ------------------------------------------------------------------
+    print()
+    print('--------------------------------------------------')
+    print('Testing  better_draw_circles:  See graphics window, incremented by x')
+    print('--------------------------------------------------')
+    better_draw_circles(x)
 
 # ----------------------------------------------------------------------
-# TODO: 3.
+# DONE: 3.
 #   In the previous exercise, you made a MORE POWERFUL version
 #   of draw_circles by introducing a PARAMETER for the amount by
 #   which the radii of the concentric circles increase.
@@ -122,6 +147,34 @@ def draw_circles():
 #   In testing your even_better_draw_circles function,
 #   can you make some fun pictures?
 # ----------------------------------------------------------------------
+
+def even_better_draw_circles(x, number, color):
+
+    window = rg.RoseWindow(400,400)
+    centerPoint = rg.Point(200, 200)
+    radius = 0
+    for k in range(number + 1):
+        radius += k*x
+        circle = rg.Circle(centerPoint, radius)
+        circle.outline_color = color
+        circle.attach_to(window)
+
+        window.render()
+    window.close_on_mouse_click()
+
+
+
+def run_test_even_better_draw_circles(x,y,color):
+
+    print()
+    print('--------------------------------------------------')
+    print('Testing  even_better_draw_circles:  See graphics window, incremented by x')
+    print('--------------------------------------------------')
+    better_draw_circles(x)
+
+
+
+
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
